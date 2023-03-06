@@ -28,7 +28,9 @@ body{
     overflow-y: scroll;
     overflow-x: hidden;
     
+    
 }
+
 .container .box-right{
     position: relative;
     flex: 70%;
@@ -307,4 +309,10 @@ color: #06d755;
         
        
     }
+    .box-left.active{
+        display: none;
+        }
+        .box-right.active{
+            display: block;
+        }
 }

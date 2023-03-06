@@ -8,12 +8,12 @@ import {
 
 
 
-const h4 = document.createElement('h4')
-const nome = document.createElement('h4')
 const chatList = document.createElement('div')
+chatList.id = "chatListId"
 const criarContatos = (contato) => {
    
     chatList.classList.add('chatlist')
+   
 
 
     const blockActive = document.createElement('div')
@@ -34,7 +34,8 @@ const criarContatos = (contato) => {
     const listhead = document.createElement('div')
     listhead.classList.add('listhead')
 
-
+    
+    const h4 = document.createElement('h4')
     h4.textContent = contato.name
 
     const time = document.createElement('p')
@@ -72,14 +73,9 @@ const criarContatos = (contato) => {
 
 
 }
-chatList.addEventListener('click', () => {
-    if (h4 == nome) {
-        AdicionarParteDireita()
-    } else {
-        return false
-    }
-})
-function AdicionarParteDireita() {
+
+
+function AdicionarParteDireitaPerfil(contato) {
     // parte de cima do perfil
     const imgPerfil = document.createElement('div')
     imgPerfil.classList.add('img-perfil')
@@ -90,14 +86,19 @@ function AdicionarParteDireita() {
     const imgWhatsapp = document.createElement('img')
     imgWhatsapp.src = `./${contato.image}`
 
-
+    const nome = document.createElement('h4')
     nome.textContent = contato.name
 
+    imgPerfil.append(userimg, nome)
+    userimg.append(imgWhatsapp)
 
+    return imgPerfil
+    
 
+}
 
     // parte das conversas do perfil
-
+function adicionarParteDireitaChat(contato){
     const chat = document.createElement('div')
     chat.classList.add('chat')
 
@@ -108,22 +109,38 @@ function AdicionarParteDireita() {
     const br = document.createElement('br')
 
     const span = document.createElement('span')
-    for (let contador = 0; contato < contato.messages.length; contato++) {
+    for (let contador = 0; contador < contato.messages.length; contator++) {
         p1.textContent = contato.messages[contador]
         span.textContent = contato.messages[contador].time
     }
 
-    imgPerfil.append(userimg, nome)
-    userimg.append(imgWhatsapp)
+    
 
     chat.append(youMessage)
     p1.append(br, span)
 
+    return chat
 
 
 }
+   
 
 
+
+
+const carregarLadoDireito = () => {
+    const perfil = document.getElementById('addLadoDireito1')
+    const chat = document.getElementById('addLadoDireito2')
+    
+    
+    const perfilScript = contatos.map(AdicionarParteDireitaPerfil)
+    const chatScript = contatos.map(adicionarParteDireitaChat)
+    perfil.replaceChildren(...perfilScript)
+    chat.replaceChildren(...chatScript)
+    
+
+
+}
 
 
 const carregarContatos = () => {
@@ -133,5 +150,17 @@ const carregarContatos = () => {
     container.replaceChildren(...contatosScript)
 
 }
+
+
+
+
+
+chatList.addEventListener('click', () => {
+  const boxLeft = document.getElementById('box-left')
+  boxLeft.classList.toggle('active')
+  
+  const boxRigth = document.getElementById('box-right')
+  boxRigth.classList.toggle('active')
+})
 
 carregarContatos()
