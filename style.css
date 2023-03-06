@@ -297,6 +297,13 @@ color: #06d755;
     border-radius: 30px;
     font-size: 1em;
 }
+.arrow-left{
+    font-size: 2.0rem;
+    font-weight: bold;
+    padding: 10px;
+    cursor: pointer;
+
+}
 @media screen and (max-width: 700px){
     .container .box-left{
         
@@ -304,15 +311,18 @@ color: #06d755;
         
     }
 
-    .container .box-right{
+    .box-right{
         display: none;
-        
-       
     }
-    .box-left.active{
-        display: none;
-        }
-        .box-right.active{
+    
+        .activeAparacer{
             display: block;
         }
+
+        .activeDesaparecer{
+            display: none !important;
+        }
+
+
+     
 }
