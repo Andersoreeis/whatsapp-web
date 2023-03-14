@@ -246,9 +246,9 @@ h4 {
     height: calc(100% - 120px);
     padding: 50px;
     background: url('./img/fundoWhats.jpg');
-    
-   
-    
+
+
+
     overflow: auto;
 }
 
@@ -356,21 +356,30 @@ h4 {
     .container .box-left {
 
         flex: 100%;
+        width: 100vw;
+        position: absolute;
+        z-index: 8;
 
+    }
+
+    .container .box-right::before {
+        width: 0px;
+        height: 0px;
+        display: none;
     }
 
     .box-right {
-        visibility: hidden;
+        position: absolute;
+        z-index: 7;
     }
 
-    .activeAparacer {
-        visibility: visible;
+    .activeAparecer {
+        display: block;
     }
 
     .activeDesaparecer {
         display: none !important;
     }
-
 
 
 
@@ -380,7 +389,7 @@ h4 {
         font-weight: bold;
         padding: 10px;
         cursor: pointer;
-        color: #51585c;
+        color: #746969;
 
     }
 

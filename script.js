@@ -60,15 +60,19 @@ const createContacts = (contato, indice) => {
 
 
     blockActive.addEventListener('click', (event) => {
+
         const container = document.getElementById('box-right')
+        container.classList.add('activeAparecer')
         container.replaceChildren(createMessage(indice))
+        const boxLeft = document.getElementById('box-left')
+        boxLeft.classList.add('activeDesaparecer')
+
     })
-   
+
 
     return chatList
 
 }
-const arrowBack = document.createElement('div')
 const createMessage = (indice) => {
 
     const boxRight = document.createElement('div')
@@ -89,8 +93,9 @@ const createMessage = (indice) => {
     const space = document.createElement('br')
     const contactDescription = document.createElement('span')
     contactDescription.textContent = contatos[indice].description
+    const arrowBack = document.createElement('div')
 
-    arrowBack.classList.add('arrow-left::before')
+    arrowBack.classList.add('arrow-left')
 
     const contactUl = document.createElement('ul')
     contactUl.classList.add('icons')
@@ -161,7 +166,13 @@ const createMessage = (indice) => {
     chatInput.append(ionIconHappy, ionIconattach, inputMessage, ionIconmic)
 
 
+    arrowBack.addEventListener('click', () => {
+        const boxRight = document.getElementById('box-right')
+        boxRight.classList.remove('activeAparecer')
 
+        const boxLeft = document.getElementById('box-left')
+        boxLeft.classList.remove('activeDesaparecer')
+    })
 
     return boxRight
 
